@@ -3,5 +3,18 @@
   "name": "NOVA Videos",
   "repository": "ZhongYeMay/novavideos",
   "baseUrl": "https://raw.githubusercontent.com/ZhongYeMay/novavideos/main/",
-  "videos": []
+  "videos": [
+    {
+      "id": "screen-recording-20260716-212837",
+      "title": "屏幕录制 · 2026-07-16 21:28:37",
+      "channel": "NOVA Studio",
+      "category": "科技",
+      "tags": ["科技", "屏幕录制"],
+      "src": "https://github.com/ZhongYeMay/novavideos/releases/download/%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6/2026-07-16.212837.mp4",
+      "thumbnail": "",
+      "duration": "--:--",
+      "views": "0",
+      "published": "刚刚"
+    }
+  ]
 }
