@@ -1,0 +1,77 @@
+name: 视频投稿
+description: 向 NOVA Videos 提交一个公开视频，审核通过后可加入 videos.json
+title: "[视频投稿] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢投稿。请先把视频放在你自己可公开访问的 GitHub Release 或其他 HTTPS 视频地址，再提交这里的资料。
+
+        投稿不会自动进入正式视频清单；维护者审核后才会写入 `videos.json`。
+
+  - type: input
+    id: title
+    attributes:
+      label: 视频标题
+      description: 网站中显示的标题。
+      placeholder: 例如：我的西安一日游
+    validations:
+      required: true
+
+  - type: input
+    id: video_url
+    attributes:
+      label: 视频直链
+      description: 请填写可公开访问的 HTTPS 视频地址。推荐使用你自己的 GitHub Release asset 的 browser_download_url。
+      placeholder: https://github.com/你的用户名/仓库/releases/download/tag/video.mp4
+    validations:
+      required: true
+
+  - type: input
+    id: thumbnail
+    attributes:
+      label: 封面地址
+      description: 可选。填写公开 HTTPS 图片地址；不填写时网站使用默认占位封面。
+      placeholder: https://...
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: 必填。仅这些标签会用于 NOVA VIDEO 的实际分区，请用英文逗号分隔。
+      placeholder: vlog, 西安, 旅行
+    validations:
+      required: true
+
+  - type: input
+    id: duration
+    attributes:
+      label: 时长
+      description: 可选，例如 36:27。未填写时网站可在播放时读取媒体元数据。
+      placeholder: 36:27
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 简介
+      description: 可选。介绍这个视频的内容。
+      placeholder: 写一点视频简介……
+
+  - type: input
+    id: channel
+    attributes:
+      label: 显示的频道名
+      description: 可选。留空时可使用投稿者 GitHub 用户名或 NOVA Creator。
+      placeholder: Your Channel
+
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: 投稿确认
+      options:
+        - label: 我拥有这个视频，或已获得允许在 NOVA VIDEO 中公开展示/播放的授权。
+          required: true
+        - label: 我确认提交的视频和封面链接可以被公众访问，并且不会故意包含恶意文件或侵犯他人隐私的内容。
+          required: true
+        - label: 我理解投稿需要审核，提交 Issue 不代表一定会被加入正式视频源。
+          required: true
