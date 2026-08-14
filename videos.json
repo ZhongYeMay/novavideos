@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "NOVA Videos",
   "repository": "ZhongYeMay/novavideos",
   "baseUrl": "https://raw.githubusercontent.com/ZhongYeMay/novavideos/main/",
@@ -13,8 +13,24 @@
       "src": "https://github.com/ZhongYeMay/novavideos/releases/download/%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6/2026-07-16.212837.mp4",
       "thumbnail": "",
       "duration": "--:--",
-      "views": "0",
-      "published": "刚刚"
+      "description": "",
+      "releaseUrl": "https://github.com/ZhongYeMay/novavideos/releases/tag/%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6",
+      "releaseTag": "屏幕录制",
+      "published": "2026-08-14"
+    },
+    {
+      "id": "vlog-20260814-xian-day-trip",
+      "title": "存档·【清朝牢视频】西安一日游【炸麦注意】",
+      "channel": "NOVA Studio",
+      "category": "vlog",
+      "tags": ["vlog"],
+      "src": "https://github.com/ZhongYeMay/novavideos/releases/download/vlog/85e5c5d0-468b-4477-a7f3-6d79dd35535a-VIDEO_HIGHLIGHT.mp4",
+      "thumbnail": "https://github.com/user-attachments/assets/3abd4a5f-7fdc-450d-a828-5d74592600a4",
+      "duration": "36:27",
+      "description": "啥也没有~就是无剪辑直接放上来的",
+      "releaseUrl": "https://github.com/ZhongYeMay/novavideos/releases/tag/vlog",
+      "releaseTag": "vlog",
+      "published": "2026-08-14"
     }
   ]
 }
