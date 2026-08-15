@@ -2,37 +2,40 @@
 
 普通投稿者通过 `.github/ISSUE_TEMPLATE/video_submission.yml` 提交视频，不拥有本仓库写权限。
 
-## 批准一个投稿
+## 自动批准
 
-确认视频、封面、tags、简介和版权声明没有明显问题后，由仓库维护者 `ZhongYeMay` 在该 `[视频投稿]` Issue 中单独回复：
+普通投稿现在由小时级扫描任务直接审核，不再要求维护者手动发送 `/approve`。
 
-```text
-/approve
-```
-
-小时级自动扫描只信任 **作者为 `ZhongYeMay` 的 `/approve` 评论**。投稿者或其他用户自己发送 `/approve` 不会触发入库。
+扫描任务会读取所有打开的 `[视频投稿]` Issue，并在满足全部入库条件时直接批准和写入 `videos.json`。仓库维护者仍然可以在自动审核之前手动关闭明显不合适的投稿。
 
 ## 自动入库规则
 
-批准后，扫描任务会：
+扫描任务会：
 
-1. 重新读取 Issue 正文和全部评论。
+1. 读取 Issue 正文并识别结构化投稿字段。
 2. 验证三项投稿确认均已勾选。
-3. 验证视频地址使用 `https://`；能确认是 GitHub Release asset 时优先读取对应 GitHub 元数据。
-4. 只使用投稿表单明确填写的 tags，不从标题、文件名、URL 或 Release tag 猜测。
-5. 可选封面必须使用 `https://`。
-6. 规范化明确填写的时长（例如 `36：27` → `36:27`）；未填写时不伪造。
-7. 检查 `videos.json` 中是否已有相同 `src`。
-8. 使用 `submission-<Issue编号>` 作为稳定 ID。
-9. 将投稿写入 `videos.json`，保留 `submissionIssue` 和 `submitter` 元数据。
-10. 在 Issue 中回复入库 commit，并关闭 Issue。
+3. 要求视频标题、HTTPS 视频地址和至少一个真实 tag。
+4. 验证视频地址可公开访问；GitHub Release asset 会优先通过 GitHub API 核实实际 asset。
+5. 只使用投稿表单明确填写的 tags，不从标题、文件名、URL 或 Release tag 猜测。
+6. 可选封面必须是可公开访问的 `https://` 地址。
+7. 规范化明确填写的时长（例如 `36：27` → `36:27`）；未填写时保持为空，由播放器读取媒体元数据。
+8. 检查 `videos.json` 中是否已有相同 `src` 或稳定投稿 ID。
+9. 使用 `submission-<Issue编号>` 作为稳定 ID。
+10. 将投稿写入 `videos.json`，保留 `submissionIssue` 和 `submitter` 元数据。
+11. 在 Issue 中回复入库 commit，并关闭 Issue。
 
-## 不会自动做的事情
+## 不会自动通过的情况
 
-- 不会自动批准任何投稿。
-- 不会接受非维护者的 `/approve`。
-- 不会把 GitHub Release 的 `download_count` 当作播放量。
-- 不会猜测 tags、播放量、点赞量或评论数。
-- 无法验证的地址会保持待审核状态，不会勉强入库。
+- 投稿确认没有全部勾选。
+- 缺少标题、视频直链或 tags。
+- 视频或封面地址不是 HTTPS，或无法合理验证为公开可访问资源。
+- 与现有视频重复。
+- 投稿内容存在明显恶意、隐私泄露、权利声明矛盾或其他明确风险。
+- 无法可靠验证的资料。
 
-如需拒绝投稿，直接关闭 Issue 即可，不要发送 `/approve`。
+## 数据原则
+
+- 不把 GitHub Release 的 `download_count` 当作播放量。
+- 不猜测 tags、播放量、点赞量或评论数。
+- 无法确认的时长、封面、简介保持缺省，不伪造。
+- 自动批准只代表通过本项目的技术与投稿字段检查，不等于对第三方内容作额外版权背书。
